@@ -9,6 +9,7 @@ import AddUser from './components/users/AddUser';
 import EditUser from './components/users/EditUser';
 import User from './components/users/User';
 import Cookies from "universal-cookie";
+import { Link } from "react-router-dom";
 
 const cookies = new Cookies();
 
@@ -125,6 +126,14 @@ class App extends React.Component {
         <div className="container mt-3">
           <h1>CRUD App</h1>
           <br />
+          <Router>
+            <div className="App">
+              <Switch>
+                <Route exact path="/users/add" component={AddUser} />
+                <Link className="btn btn-warning my-3" to="/users/add">Sign Up</Link>
+              </Switch>
+            </div>
+          </Router>
           <h2>Login</h2>
           <form onSubmit={this.login}>
             <div className="form-group">
@@ -143,11 +152,11 @@ class App extends React.Component {
               </div>
             </div>
             <button type="submit" className="btn btn-primary">Login</button>
-            
-            <br/><br/>
-            <a href="/users/add">Dont have an account ?</a>
+
+
 
           </form>
+
         </div>
       );
     }
@@ -172,4 +181,3 @@ class App extends React.Component {
 }
 
 export default App;
-
