@@ -123,39 +123,49 @@ class App extends React.Component {
   render() {
     if (!this.state.isAuthenticated) {
       return (
-        <div className="container mt-3">
-          <h1>CRUD App</h1>
+        <div className="container">
+          {/* <br/>
+          <h1 className="text-center mb-4"><strong>CRUD App</strong></h1> */}
           <br />
+          <br/>
+          <br/>
+          <div className="w-75 mx-auto shadow p-5">
+            <br />
+            <h2 className="text-center mb-4">CRUD App Login</h2>
+            <form onSubmit={this.login}>
+              <div className="form-group">
+                <label htmlFor="username">Username</label>
+                <input type="text" className="form-control" id="username" name="username" value={this.state.username} onChange={this.handleUserNameChange} />
+              </div>
+              <div className="form-group">
+                <label htmlFor="username">Password</label>
+                <input type="password" className="form-control" id="password" name="password" value={this.state.password} onChange={this.handlePasswordChange} />
+                <div>
+                  {this.state.error &&
+                    <small className="text-danger">
+                      {this.state.error}
+                    </small>
+                  }
+                </div>
+              </div>
+              <button type="submit" className="btn btn-primary w-100">Login</button>
+            </form>
+            <br />
+            <br />
+          </div>
+          <br />
+          <br />
+
           <Router>
             <div className="App">
               <Switch>
                 <Route exact path="/users/add" component={AddUser} />
-                <Link className="btn btn-warning my-3" to="/users/add">Sign Up</Link>
+                <div className="w-75 mx-auto">
+                  <Link className="btn btn-outline-success w-100" to="/users/add">Sign Up</Link>
+                </div>
               </Switch>
             </div>
           </Router>
-          <h2>Login</h2>
-          <form onSubmit={this.login}>
-            <div className="form-group">
-              <label htmlFor="username">Username</label>
-              <input type="text" className="form-control" id="username" name="username" value={this.state.username} onChange={this.handleUserNameChange} />
-            </div>
-            <div className="form-group">
-              <label htmlFor="username">Password</label>
-              <input type="password" className="form-control" id="password" name="password" value={this.state.password} onChange={this.handlePasswordChange} />
-              <div>
-                {this.state.error &&
-                  <small className="text-danger">
-                    {this.state.error}
-                  </small>
-                }
-              </div>
-            </div>
-            <button type="submit" className="btn btn-primary">Login</button>
-
-
-
-          </form>
 
         </div>
       );

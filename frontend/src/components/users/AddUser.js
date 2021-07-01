@@ -29,7 +29,7 @@ const AddUser = () => {
     return (
         <div className="container">
             <div className="w-75 mx-auto shadow p-5">
-                <h2 className="text-center mb-4">Add A User</h2>
+                <h2 className="text-center mb-4">Sign Up</h2>
                 <form onSubmit={e => onSubmit(e)}>
                     <div className="form-group my-3">
                         <input
@@ -39,6 +39,7 @@ const AddUser = () => {
                             name="first_name"
                             value={first_name}
                             onChange={e => onInputChange(e)}
+                            required
                         />
                     </div>
                     <div className="form-group my-3">
@@ -49,6 +50,7 @@ const AddUser = () => {
                             name="last_name"
                             value={last_name}
                             onChange={e => onInputChange(e)}
+                            required
                         />
                     </div>
                     <div className="form-group my-3">
@@ -59,6 +61,7 @@ const AddUser = () => {
                             name="email"
                             value={email}
                             onChange={e => onInputChange(e)}
+                            required
                         />
                     </div>
                     <div className="form-group my-3">
@@ -69,6 +72,7 @@ const AddUser = () => {
                             name="username"
                             value={username}
                             onChange={e => onInputChange(e)}
+                            required
                         />
                     </div>
                     <div className="form-group my-3">
@@ -79,6 +83,7 @@ const AddUser = () => {
                             name="password"
                             value={password}
                             onChange={e => onInputChange(e)}
+                            required
                         />
                     </div>
                     <div className="form-group my-3">
@@ -89,9 +94,10 @@ const AddUser = () => {
                             name="is_superuser"
                             value={is_superuser}
                             onChange={e => onInputChange(e)}
+                            required
                         />
                     </div>
-                    <button className="btn btn-primary btn-block w-100">Add User</button>
+                    <button className="btn btn-primary btn-block w-100">Register</button>
                 </form>
             </div>
         </div>

@@ -11,7 +11,9 @@ class UserSerializer(serializers.ModelSerializer):
 
     def validate(self, attrs):
         username=attrs.get('username', '')
-        if User.objects.filter(username=username).exists():
+        userList = User.objects.filter(username=username).all()
+        user = userList[0] if userList else None
+        if User.objects.filter(username=username).exists() and user is None:
             raise serializers.ValidationError({'username': ('Username is already taken!')})
         return super().validate(attrs);
 

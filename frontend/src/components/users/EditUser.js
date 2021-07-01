@@ -80,7 +80,7 @@ const EditUser = () => {
                             onChange={e => onInputChange(e)}
                         />
                     </div>
-                    <div className="form-group my-3">
+                    {/* <div className="form-group my-3">
                         <input
                             type="password"
                             className="form-control form-control-lg"
@@ -89,7 +89,7 @@ const EditUser = () => {
                             value={password}
                             onChange={e => onInputChange(e)}
                         />
-                    </div>
+                    </div> */}
                     <div className="form-group my-3">
                         <input
                             type="text"

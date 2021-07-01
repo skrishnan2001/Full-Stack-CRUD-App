@@ -29,7 +29,7 @@ const Home = () => {
                 <table className="table border shadow">
                     <thead className="table-dark">
                         <tr>
-                            <th scope="col">ID</th>
+                            {/* <th scope="col">ID</th> */}
                             <th scope="col">Name </th>
                             <th scope="col">User Name</th>
                             <th scope="col">Email</th>
@@ -40,7 +40,7 @@ const Home = () => {
                         {
                             users.map((user, index) => (
                                 <tr>
-                                    <th scope="row">{user.id}</th>
+                                    {/* <th scope="row">{user.id}</th> */}
                                     <td>{user.first_name+" "+user.last_name}</td>
                                     <td>{user.username}</td>
                                     <td>{user.email}</td>
