@@ -10,8 +10,16 @@ const AddUser = () => {
         username: "",
         email: "",
         password: "",
-        is_superuser: "",
+        is_superuser: "false",
     });
+
+    const [role, setRole] = useState('false');
+
+    const changeRole = (newRole) => {
+        setRole(newRole)
+        user.is_superuser = newRole;
+    }
+
 
     const { first_name, last_name, username, email, password, is_superuser } = user;
     const onInputChange = e => {
@@ -87,7 +95,7 @@ const AddUser = () => {
                         />
                     </div>
                     <div className="form-group my-3">
-                        <input
+                        {/* <input
                             type="text"
                             className="form-control form-control-lg"
                             placeholder="Is Admin ?"
@@ -95,7 +103,15 @@ const AddUser = () => {
                             value={is_superuser}
                             onChange={e => onInputChange(e)}
                             required
-                        />
+                        /> */}
+                        <select class="browser-default custom-select"
+                            value={role}
+                            onChange={(event) => changeRole(event.target.value)}
+                        >
+                            <option value="false">Normal User</option>
+                            <option value="true">Admin</option>
+                        </select>
+
                     </div>
                     <button className="btn btn-primary btn-block w-100">Register</button>
                 </form>

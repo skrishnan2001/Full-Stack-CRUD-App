@@ -46,7 +46,7 @@ const Home = () => {
                                     <td>{user.email}</td>
                                     <td>
                                         <Link class="btn btn-primary mx-1" to={`/users/${user.id}`}>View</Link>
-                                        <Link class="btn btn-outline-primary mx-1" to={`/users/edit/${user.id}`}>Edit</Link>
+                                        {/* <Link class="btn btn-outline-primary mx-1" to={`/users/edit/${user.id}`}>Edit</Link> */}
                                         <Link class="btn btn-danger mx-1" onClick={() => deleteUser(user.id)}>Delete</Link>
                                     </td>
                                 </tr>

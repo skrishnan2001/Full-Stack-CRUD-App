@@ -58,7 +58,8 @@ class App extends React.Component {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("You are logged in as: " + data.username);
+        //console.log("You are logged in as: " + data.username);
+        console.log("ID : ",data.id);
       })
       .catch((err) => {
         console.log(err);
@@ -177,8 +178,6 @@ class App extends React.Component {
           <button className="btn btn-danger float-right mr-4 my-2" onClick={this.logout}>Log out</button>
           <Switch>
             <Route exact path="/" component={Home} />
-            {/* <Route exact path="/about" component={About} />
-            <Route exact path="/contact" component={Contact} /> */}
             <Route exact path="/users/add" component={AddUser} />
             <Route exact path="/users/edit/:id" component={EditUser} />
             <Route exact path="/users/:id" component={User} />

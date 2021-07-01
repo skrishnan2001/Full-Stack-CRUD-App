@@ -14,6 +14,13 @@ const EditUser = () => {
         is_superuser: "",
     });
 
+    const [role, setRole] = useState('false');
+
+    const changeRole = (newRole) => {
+        setRole(newRole)
+        user.is_superuser = newRole;
+    }
+
     const { first_name, last_name, username, email, password, is_superuser } = user;
     const onInputChange = e => {
         setUser({ ...user, [e.target.name]: e.target.value });
@@ -34,6 +41,7 @@ const EditUser = () => {
         //const result = await axios.get(`http://localhost:3003/users/${id}`);
         const result = await axios.get(`http://127.0.0.1:8000/api/user/${id}/`);
         setUser(result.data);
+        setRole(result.data.is_superuser);
     };
     return (
         <div className="container">
@@ -91,14 +99,21 @@ const EditUser = () => {
                         />
                     </div> */}
                     <div className="form-group my-3">
-                        <input
+                        {/* <input
                             type="text"
                             className="form-control form-control-lg"
                             placeholder="Is Admin?"
                             name="is_superuser"
                             value={is_superuser}
                             onChange={e => onInputChange(e)}
-                        />
+                        /> */}
+                        <select class="browser-default custom-select"
+                            value={role}
+                            onChange={(event) => changeRole(event.target.value)}
+                        >
+                            <option value="false">Normal User</option>
+                            <option value="true">Admin</option>
+                        </select>
                     </div>
                     <button className="btn btn-warning btn-block w-100">Update User</button>
                 </form>

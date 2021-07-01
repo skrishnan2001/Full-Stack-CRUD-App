@@ -1,8 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
 
+    const [userid, setUserId] = useState();
+    const whoami = () => {
+        fetch("/userapi/whoami/", {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            credentials: "same-origin",
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log("You are logged in as: " + data.username);
+                console.log("ID : ", data.id);
+                setUserId(data.id);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+    //whoami();
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -26,7 +45,8 @@ const Navbar = () => {
                     </ul>
 
                 </div>
-                {/* <Link className="btn btn-outline-light" to="/users/add">Add User</Link> */}
+                {whoami()}
+                <Link className="btn btn-outline-light" to={"/users/edit/" + userid}>Edit User</Link>
             </div>
         </nav>
     )
