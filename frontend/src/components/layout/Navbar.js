@@ -37,17 +37,11 @@ const Navbar = () => {
                         <li className="nav-item">
                             <NavLink className="nav-link" exact to="/">Home</NavLink>
                         </li>
-                        {/* <li className="nav-item">
-                            <NavLink className="nav-link" exact to="/about">About</NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" exact to="/contact">Contact</NavLink>
-                        </li> */}
                     </ul>
 
                 </div>
                 {whoami()}
-                <Link className="btn btn-outline-light" to={"/users/edit/" + userid}>Edit User</Link>
+                <Link className="btn btn-outline-light" to={"/users/edit/" + userid}>Edit Details</Link>
             </div>
         </nav>
     )
