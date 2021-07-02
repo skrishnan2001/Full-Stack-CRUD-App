@@ -50,7 +50,7 @@ def whoami_view(request):
     if not request.user.is_authenticated:
         return JsonResponse({'isAuthenticated': False})
 
-    return JsonResponse({'username': request.user.username, 'id': request.user.id})
+    return JsonResponse({'username': request.user.username, 'id': request.user.id, 'is_superuser': request.user.is_superuser})
 
 class RegisterView(GenericAPIView):
     serializer_class = UserSerializer

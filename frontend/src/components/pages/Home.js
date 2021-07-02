@@ -5,6 +5,26 @@ import { Link } from 'react-router-dom'
 const Home = () => {
     const [users, setUser] = useState([]);
 
+    const [role, setRole] = useState();
+    const whoami = () => {
+        fetch("/userapi/whoami/", {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            credentials: "same-origin",
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log("You are logged in as: " + data.username);
+                console.log("ID : ", data.id);
+                console.log("Is Admin ? : ", data.is_superuser);
+                setRole(data.is_superuser);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
     useEffect(() => {
         loadUsers();
     }, []);
@@ -25,6 +45,7 @@ const Home = () => {
     return (
         <div className="container">
             <div className="py-4">
+                {whoami()}
                 <h1>Dashboard</h1>
                 <table className="table border shadow">
                     <thead className="table-dark">
@@ -38,19 +59,32 @@ const Home = () => {
                     </thead>
                     <tbody>
                         {
-                            users.map((user, index) => (
-                                <tr>
-                                    {/* <th scope="row">{user.id}</th> */}
-                                    <td>{user.first_name+" "+user.last_name}</td>
-                                    <td>{user.username}</td>
-                                    <td>{user.email}</td>
-                                    <td>
-                                        <Link class="btn btn-primary mx-1" to={`/users/${user.id}`}>View</Link>
-                                        {/* <Link class="btn btn-outline-primary mx-1" to={`/users/edit/${user.id}`}>Edit</Link> */}
-                                        <Link class="btn btn-danger mx-1" onClick={() => deleteUser(user.id)}>Delete</Link>
-                                    </td>
-                                </tr>
-                            ))
+                            role ?
+                                (users.map((user, index) => (
+                                    <tr>
+                                        {/* <th scope="row">{user.id}</th> */}
+                                        <td>{user.first_name + " " + user.last_name}</td>
+                                        <td>{user.username}</td>
+                                        <td>{user.email}</td>
+                                        <td>
+                                            <Link class="btn btn-primary mx-1" to={`/users/${user.id}`}>View</Link>
+                                            {/* <Link class="btn btn-outline-primary mx-1" to={`/users/edit/${user.id}`}>Edit</Link> */}
+                                            <Link class="btn btn-danger mx-1" onClick={() => deleteUser(user.id)}>Delete</Link>
+                                        </td>
+                                    </tr>
+                                ))) :
+                                (users.map((user, index) => (
+                                    <tr>
+                                        {/* <th scope="row">{user.id}</th> */}
+                                        <td>{user.first_name + " " + user.last_name}</td>
+                                        <td>{user.username}</td>
+                                        <td>{user.email}</td>
+                                        <td>
+                                            <Link class="btn btn-primary mx-1" to={`/users/${user.id}`}>View</Link>
+                                        </td>
+                                    </tr>
+                                )))
+
                         }
                     </tbody>
                 </table>

@@ -13,8 +13,9 @@ const Navbar = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log("You are logged in as: " + data.username);
-                console.log("ID : ", data.id);
+                //console.log("You are logged in as: " + data.username);
+                //console.log("ID : ", data.id);
+                //console.log("Is Admin ? : ", data.is_superuser);
                 setUserId(data.id);
             })
             .catch((err) => {

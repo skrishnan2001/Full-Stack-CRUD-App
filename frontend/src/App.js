@@ -49,23 +49,6 @@ class App extends React.Component {
       });
   }
 
-  whoami = () => {
-    fetch("/userapi/whoami/", {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "same-origin",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        //console.log("You are logged in as: " + data.username);
-        console.log("ID : ",data.id);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
   handlePasswordChange = (event) => {
     this.setState({ password: event.target.value });
   }
