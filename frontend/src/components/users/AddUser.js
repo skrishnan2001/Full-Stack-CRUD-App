@@ -21,7 +21,7 @@ const AddUser = () => {
     }
 
 
-    const { first_name, last_name, username, email, password, is_superuser } = user;
+    const { first_name, last_name, username, email, password } = user;
     const onInputChange = e => {
         setUser({ ...user, [e.target.name]: e.target.value });
     };

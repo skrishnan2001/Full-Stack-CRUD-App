@@ -6,6 +6,7 @@ const Home = () => {
     const [users, setUser] = useState([]);
 
     const [role, setRole] = useState();
+    const [uid, setUid] = useState();
     const whoami = () => {
         fetch("/userapi/whoami/", {
             headers: {
@@ -19,6 +20,7 @@ const Home = () => {
                 console.log("ID : ", data.id);
                 console.log("Is Admin ? : ", data.is_superuser);
                 setRole(data.is_superuser);
+                setUid(data.id);
             })
             .catch((err) => {
                 console.log(err);
@@ -69,7 +71,9 @@ const Home = () => {
                                         <td>
                                             <Link class="btn btn-primary mx-1" to={`/users/${user.id}`}>View</Link>
                                             {/* <Link class="btn btn-outline-primary mx-1" to={`/users/edit/${user.id}`}>Edit</Link> */}
-                                            <Link class="btn btn-danger mx-1" onClick={() => deleteUser(user.id)}>Delete</Link>
+                                            {uid !== user.id &&
+                                                <Link class="btn btn-danger mx-1" onClick={() => deleteUser(user.id)}>Delete</Link>
+                                            }
                                         </td>
                                     </tr>
                                 ))) :
