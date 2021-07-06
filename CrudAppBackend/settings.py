@@ -106,7 +106,8 @@ DATABASES = {
         'NAME': 'restfulapiDB',
         'USER': 'postgres',
         'PASSWORD': '27032001',
-        'HOST': 'localhost'
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
 
