@@ -20,13 +20,13 @@ The attributes for a user:<br/>
 - name : String
 
 ### The endpoints for the app 
-1. Create a user POST /user this endpoint should be used to create a new user and takes
+1. Create a user `POST /user` this endpoint should be used to create a new user and takes
 the user schema apart from id attribute as a JSON in the request body.
-2. Get list of users GET /user this endpoint returns a list of users that exists in the system.
-3. Get a single user GET /user/<id> this endpoint returns the details of a specific user.
-4. Update a user PUT /user/<id> this endpoint is used to update a user's details.
-5. Delete a user DELETE /user/<id> this endpoint is for deleting the user.
-6. Create a login token POST /login this endpoint logs the user in and returns a token for
+2. Get list of users `GET /user` this endpoint returns a list of users that exists in the system.
+3. Get a single user `GET /user/<id>` this endpoint returns the details of a specific user.
+4. Update a user `PUT /user/<id>` this endpoint is used to update a user's details.
+5. Delete a user `DELETE /user/<id>` this endpoint is for deleting the user.
+6. Create a login token `POST /login` this endpoint logs the user in and returns a token for
 successful login. The token is used to authenticate requests.
 <br/>
 All attributes(except id) are mandatory for the user schema.
@@ -50,7 +50,7 @@ requested from the server.
 
 <br/><br/>
 Your server should be deployable along with all its dependencies as a docker container.
-Please use the following base image to build your container <strong>python 3.8.10-slim</strong>
+Please use the following base image to build your container `python 3.8.10-slim`
 <br/>
 <br/>
 You are expected to implement a CI/CD pipeline using GitLab CI. CI/CD Pipeline to be built using Gitlab CI:
